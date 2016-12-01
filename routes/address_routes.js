@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var address_dal = require('../model/address_dal');
+var address = require('../model/address');
 
 
 // View All addresses
 router.get('/all', function(req, res) {
-    address_dal.getAll(function(err, result){
+    address.getAll(function(err, result){
         if(err) {
             res.send(err);
         }
@@ -22,7 +22,7 @@ router.get('/', function(req, res){
         res.send('address_id is null');
     }
     else {
-        address_dal.getById(req.query.address_id, function(err,result) {
+        address.getById(req.query.address_id, function(err,result) {
             if (err) {
                 res.send(err);
             }

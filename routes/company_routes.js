@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var company_dal = require('../model/company_dal');
+var company = require('../model/company');
 
 
 // View All Companies
 router.get('/all', function(req, res) {
-    company_dal.getAll(function(err, result){
+    company.getAll(function(err, result){
         if(err) {
             res.send(err);
         }
@@ -22,7 +22,7 @@ router.get('/', function(req, res){
         res.send('company_id is null');
     }
     else {
-        company_dal.getById(req.query.company_id, function(err,result) {
+        company.getById(req.query.company_id, function(err,result) {
             if (err) {
                 res.send(err);
             }

@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var skill_dal = require('../model/skill_dal');
+var skill = require('../model/skill');
 
 
 // View All Skills
 router.get('/all', function(req, res) {
-    skill_dal.getAll(function(err, result){
+    skill.getAll(function(err, result){
         if(err) {
             res.send(err);
         }
@@ -22,7 +22,7 @@ router.get('/', function(req, res){
         res.send('skill_id is null');
     }
     else {
-        skill_dal.getById(req.query.skill_id, function(err,result) {
+        skill.getById(req.query.skill_id, function(err,result) {
             if (err) {
                 res.send(err);
             }

@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var account_dal = require('../model/account_dal');
+var account = require('../model/account');
 
 
 // View All accounts
 router.get('/all', function(req, res) {
-    account_dal.getAll(function(err, result){
+    account.getAll(function(err, result){
         if(err) {
             res.send(err);
         }
@@ -22,7 +22,7 @@ router.get('/', function(req, res){
         res.send('account_id is null');
     }
     else {
-        account_dal.getById(req.query.account_id, function(err,result) {
+        account.getById(req.query.account_id, function(err,result) {
             if (err) {
                 res.send(err);
             }
